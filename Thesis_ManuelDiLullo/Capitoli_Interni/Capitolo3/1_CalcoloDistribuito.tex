@@ -1,0 +1,16 @@
+\section{Calcolo Distribuito}
+Questa tesi nasce dall'idea di sperimentare ed analizzare le prestazioni offerte dal framework Spark NLP eseguendolo in ambiente distribuito. Ma cosa è Spark NLP? Su cosa si basa? E perché usare un ambiente distribuito? Per rispondere a queste domande bisogna partire descrivendo cosa è il calcolo distribuito.
+
+Wikipedia definisce il calcolo distribuito come \textit{<<un campo dell'informatica che studia i sistemi distribuiti, ovvero sistemi che consistono in numerosi computer che interagiscono tra loro attraverso una rete al fine di raggiungere un obiettivo comune>>}. In altre parole, i sistemi distribuiti sono una collezione di componenti indipendenti situati su diverse macchine che, messi in comunicazione tra loro, interagiscono al fine di raggiungere un obiettivo comune fornendo importanti vantaggi a chi li implementa, come: aumento delle prestazioni, tolleranza agli errori e diminuzione del carico. Un sistema distribuito può consistere in qualsiasi numero di possibili configurazioni, come mainframe, personal computer, workstation, minicomputer e così via. L'obiettivo è quello di far funzionare tale rete come un singolo computer. I motivi principali per cui utilizzare un sistema distribuito sono:
+\begin{itemize}
+    \item \textbf{Affidabilità}: il sistema generalmente non subisce interruzioni se una singola macchina si guasta.
+    \item \textbf{Scalabilità}: è facile e generalmente poco costoso aggiungere altri nodi e funzionalità se necessario.
+    \item \textbf{Performance}: sono estremamente efficienti perché i carichi di lavoro possono essere suddivisi e inviati a più macchine.
+\end{itemize}
+La progettazione di questi sistemi è comunque un lavoro dispendioso. Nonostante i considerevoli benefici che essi portano, questi ultimi potrebbero non ripagare i costi di realizzazione. Le maggiori sfide che un sistema distribuito potrebbe incontrare si dividono in:
+\begin{itemize}
+    \item \textbf{Scheduling}: decidere quali lavori devono essere eseguiti, quando devono essere eseguiti e dove devono essere eseguiti. 
+    \item \textbf{Latenza}: spesso potrebbero essere incontrati dei problemi a livello di latenza, che creano inconvenienti a livello di efficienza e consistenza dei dati. Questo motivo porta i team a fare compromessi tra disponibilità, coerenza e latenza. 
+    \item \textbf{Osservabilità}: raccogliere, elaborare, presentare e monitorare le metriche di utilizzo dell'hardware per grandi sistemi è una sfida significativa
+\end{itemize}
+Nello specifico, in questo progetto è stato utilizzato un tipo di sistema distribuito chiamato \textbf{Cluster}. Quando si parla di cluster si intende un sistema di computer connessi tramite una rete con lo scopo di distribuire una elaborazione (parallelizzabile) tra i computer che compongono il cluster.

@@ -1,0 +1,35 @@
+\subsection{Tabelle riassuntive dataset}
+
+\subsubsection{Text Classification}
+\begin{table}[ht!]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+            \textbf{Utilizzo} & \textbf{Formato} & \textbf{Numero di esempi} \\
+        \hline
+            Addestramento & CSV & 120.000\\
+        \hline
+            Test & CSV & 7.600 \\
+        \hline
+    \end{tabular}
+    \caption{Dataset per Text Classification}
+    \label{tab:dataset_textc}
+\end{table}
+
+\subsubsection{Named Entity Recognition}
+\begin{table}[ht!]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+            \textbf{Lingua} & \textbf{Utilizzo} & \textbf{Formato} & \textbf{Numero di esempi} \\
+        \hline
+            \multirow{2}*{Inglese} & Addestramento  & CoNLL '03 & 14.041     \\
+            \cline{2-4}            & Test & CoNLL '03 & 6.603    \\
+        \hline
+            \multirow{2}*{Italiano} & Addestramento  & CoNLL '03 & 11.227     \\
+            \cline{2-4}            & Test & CoNLL '03 & 4.136    \\
+        \hline
+    \end{tabular}
+    \caption{Dataset per NER}
+    \label{tab:dataset_ner}
+\end{table}

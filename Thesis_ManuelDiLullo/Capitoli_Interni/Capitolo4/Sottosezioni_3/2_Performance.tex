@@ -1,0 +1,100 @@
+\subsection{Performance}
+\renewcommand{\arraystretch}{2}
+% -----------------
+%  Text Classification - Inglese
+% -----------------
+\subsubsection{Text Classification - Inglese}
+\begin{table}[hbt!]
+    \centering
+    \begin{tabular}{|c|c|}
+      \hline
+          Embedding & Accuracy  \\
+      \hline
+             USE    &   89\%    \\
+      \hline
+        Sentence BERT (base\_case)    &   89\%   \\
+      \hline
+    \end{tabular}
+    
+    \caption{Risultati per Text Classification}
+    \label{tab:textc_results}
+\end{table}
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/results/cmatrix_textc_use.png}
+    \caption{Text Classification - USE: classification report}
+    \label{fig:creport_textc_use}
+\end{figure}
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/results/cmatrix_textc_bert.png}
+    \caption{Text Classification - BERT: classification report}
+    \label{fig:creport_textc_bert}
+\end{figure}
+
+% -----------------
+%  Named Entity Recognition - Inglese
+% -----------------
+\clearpage
+\subsubsection{Named Entity Recognition - Inglese}
+\begin{table}[ht!]
+    \centering
+
+    \begin{tabular}{|c|c|}
+      \hline
+        Embedding & F1-Score \\
+      \hline
+          GloVe  &   85.8\% \\
+      \hline
+          BERT (base\_case)   &   86.5\% \\
+      \hline
+    \end{tabular}
+    \caption{Risultati per NER in Inglese}
+    \label{tab:ner_eng_results}
+\end{table}
+\begin{figure}[hbt!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/results/creport_ner_eng_glove.png}
+    \caption{NER in Inglese - GloVe: classification report}
+    \label{fig:creport_ner_eng_glove}
+\end{figure}
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/results/creport_ner_eng_bert.png}
+    \caption{NER in Inglese - BERT: classification report}
+    \label{fig:creport_ner_eng_bert}
+\end{figure}
+
+% -----------------
+%  Named Entity Recognition - Italiano
+% -----------------
+\clearpage
+\subsubsection{Named Entity Recognition - Italiano}
+\begin{table}[hbt!]
+    \centering
+
+    \begin{tabular}{|c|c|}
+      \hline
+        Embedding & F1-Score \\
+      \hline
+          GloVe  &   65\% \\
+      \hline
+          BERT (base\_case)  &   60.5\% \\
+      \hline
+    \end{tabular}
+    \caption{Risultati per NER in Inglese}
+    \label{tab:ner_ita_results}
+\end{table}
+\begin{figure}[hbt!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/results/creport_ner_ita_glove.png}
+    \caption{NER in Italiano - GloVe: classification report}
+    \label{fig:creport_ner_ita_glove}
+\end{figure}
+\begin{figure}[hbt!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/results/creport_ner_ita_bert.png}
+    \caption{NER in Italiano - BERT: classification report}
+    \label{fig:creport_ner_ita_bert}
+\end{figure}

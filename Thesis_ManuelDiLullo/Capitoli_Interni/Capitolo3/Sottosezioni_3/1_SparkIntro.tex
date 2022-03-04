@@ -1,0 +1,12 @@
+\subsection{Cosa è Spark}
+Apache Spark è un motore multilingue per la automazione di ingegneria dei dati, scienza dei dati e apprendimento automatico su macchine a nodo singolo o cluster. La peculiarità di Apache Spark è la sua capacità di elaborare set di dati di grandi dimensioni in maniera efficiente, distribuendo attività di elaborazione dati su più computer, anche integrando Hadoop YARN e HDFS. Questi attributi sono fondamentali per il mondo dei big data e del machine learning.
+
+All'epoca della nascita di questo progetto, Hadoop MapReduce era il motore di programmazione parallela predominante per i cluster, essendo il primo sistema open source ad affrontare l'elaborazione dei dati su migliaia di nodi. L'AMPlab aveva lavorato con molti dei primi utenti di MapReduce per capire i benefici e gli svantaggi di questo nuovo modello di programmazione ed era quindi in grado di sintetizzare una lista di problemi attraverso diversi casi d'uso e iniziare a progettare piattaforme di calcolo più generali. Spark pertanto nasce prendendo i pregi di MapReduce ed introducendo nuove funzionalità che, ad oggi, lo hanno reso uno dei framework più solidi nell'ambito dei big data:
+\begin{itemize}
+    \item Spark supporta l’elaborazione in memoria centrale per migliorare le prestazioni delle applicazioni, a differenza di MapReduce che deve riportare i dati sul disco dopo ogni azione Map o Reduce.
+    \item Il suo predecessore poteva essere implementato soltanto utilizzando il linguaggio Java. Spark, invece, fornisce connessioni native per i linguaggi di programmazione Java, Scala, Python e R e supporta operazioni SQL. 
+    \item Può elaborare grafi ed è anche dotato di una propria libreria di machine learning. Grazie alle sue alte prestazioni, è possibile utilizzarlo sia per l'elaborazione in batch sia per l'elaborazione simil real-time. 
+    \item Sfrutta il paradigma del Transfer Learning (il riutilizzo di un modello pre-addestrato su un nuovo problema). 
+    \item Permette di elaborare dei dati da vari repository come Hadoop Distributed File System (HDFS), database NoSQL e Apache Hive utilizzando le API di storage di dell'ecosistema Hadoop.
+    \item In MapReduce, ogni operazione è indipendente dall'altra e Hadoop non ha idea di quale verrà dopo. Spark, invece, utilizza un modello di programmazione completamente innovativo basato su grafi diretti aciclici (DAGs).
+\end{itemize}

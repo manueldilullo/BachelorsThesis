@@ -1,0 +1,13 @@
+\subsection{Come funziona Spark NLP}
+Spark ML fornisce un insieme di applicazioni di Machine Learning che possono essere costruite
+utilizzando due componenti principali: \textbf{Estimators} e \textbf{Trasformers}. Gli Estimators hanno un metodo chiamato \verb|fit(data)| che addestra un pezzo di dati a tale applicazione. Il Transformer\footnote{Elenco Transformers: \href{https://nlp.johnsnowlabs.com/docs/en/transformers}{https://nlp.johnsnowlabs.com/docs/en/transformers}} è generalmente il risultato di un processo di addestramento e applica le modifiche al set di dati di
+destinazione. Questi componenti sono stati incorporati per essere applicabili a Spark NLP. Per combinare più estimators e trasformers in un unico flusso di lavoro viene utilizzato il meccanismo delle \textit{Pipelines}. Esse permettono più trasformazioni concatenate lungo un task di Machine Learning restituendo come risultato un'\textbf{annotazione}.
+
+Gli annotatori\footnote{Elenco annotatori: \href{https://nlp.johnsnowlabs.com/docs/en/annotators}{https://nlp.johnsnowlabs.com/docs/en/annotators}} sono la punta di diamante delle funzioni NLP in Spark NLP e sono disponibili in due forme:
+\begin{itemize}
+    \item \textbf{Annotator Approaches}: sono quelli che rappresentano uno Spark ML Estimator e richiedono una fase di allenamento. Hanno una funzione chiamata \verb|fit(data)| che allena un modello basato su alcuni dati. Producono il secondo tipo di annotatore che è un modello annotatore o trasformatore.
+    \item \textbf{Annotator Models}: sono modelli spark o trasformatori, cioè hanno una funzione \textit{transform(data)}. Questa funzione prende come input un dataframe al quale aggiunge una nuova colonna contenente il risultato dell'annotazione corrente. Tutti i trasformatori sono additivi, il che significa che aggiungono ai dati correnti, senza mai sostituire o cancellare le informazioni precedenti
+\end{itemize}
+Entrambe le forme di annotatori possono essere incluse in una Pipeline. Tutti gli annotatori inclusi in una Pipeline saranno automaticamente eseguiti nell'ordine definito e trasformeranno i dati di conseguenza. Una Pipeline viene trasformata in un \textbf{PipelineModel} dopo la fase \verb|fit(data)|. La Pipeline può essere salvata su disco e ricaricata in qualsiasi momento.
+
+Nel capitolo \ref{sperimentazione} verrà illustrato nel dettaglio come questo framework è stato utilizzato durante la fase di sperimentazione.

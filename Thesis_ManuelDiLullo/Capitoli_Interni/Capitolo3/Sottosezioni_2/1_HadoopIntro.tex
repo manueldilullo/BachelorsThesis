@@ -1,0 +1,12 @@
+\subsection{Cosa è Hadoop}
+Hadoop\footnote{Apache Hadoop: \href{https://hadoop.apache.org/}{https://hadoop.apache.org/}} è stato creato dalla Apache Software Foundation\footnote{Apache Software Foundation \href{https://www.apache.org/}{https://www.apache.org/}} ed è stato prodotto nei primi anni 2000 per rispondere alla crescita dei motori di ricerca come Yahoo e Google. Nato da Doug Cutting e Michael Cafarella, il progetto prese il nome dall'elefante giocattolo di uno degli sviluppatori. Hadoop è stato rilasciato come progetto open-source nel 2008 e poi nel 2012 dalla Apache Software Foundation. Oggi, Hadoop è composto da librerie open-source destinate ad elaborare grandi insiemi di dati su migliaia di computer in cluster.
+
+Si tratta di un framework per l'esecuzione di applicazioni su grandi cluster costruiti con hardware di largo consumo a basso costo. Hadoop fornisce in modo trasparente applicazioni sia per l'affidabilità che per il trasferimento dei dati e consiste di quattro moduli principali:
+\begin{itemize}
+    \item \textbf{Hadoop Common}: utilities che supportano gli altri moduli Hadoop.
+    \item \textbf{Hadoop Yet Another Resource Negotiator (YARN)}: Un framework per lo scheduling dei job e la gestione delle risorse del cluster
+    \item \textbf{Hadoop Distributed File System (HDFS)}: Un file system distribuito che fornisce un accesso ad alta velocità ai dati delle applicazioni.
+    \item \textbf{Hadoop MapReduce}: Un sistema basato su YARN per l'elaborazione parallela di grandi insiemi di dati.
+\end{itemize}
+
+Nella fase di sperimentazione, Hadoop è stato utilizzato per implementare un file system distribuito attraverso il quale, le macchine appartenenti al cluster possono processare i dataset di addestramento e di test in maniera distribuita. Per chiarire questo concetto abbiamo però bisogno di introdurre il funzionamento di HDFS, MapReduce e YARN.

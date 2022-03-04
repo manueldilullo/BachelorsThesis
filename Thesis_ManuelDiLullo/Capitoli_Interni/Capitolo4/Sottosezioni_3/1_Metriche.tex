@@ -1,0 +1,17 @@
+\subsection{Metriche} \label{metriche}
+A partire dalle previsioni prodotte, è stato generato un \textit{classification report}. Si tratta di un rapporto che descrive varie metriche relative a quanto bene ha funzionato un modello di machine learning e che si ottengono confrontando i risultati prodotti dal modello con quelli attesi. Il report mostra le principali metriche di classificazione:
+\begin{itemize}
+    \item \textbf{Precisione (Precision)}: la capacità di un classificatore di identificare solo le istanze corrette per ogni classe.
+    \item \textbf{Richiamo (Recall)}: la capacità di un classificatore di trovare tutte le istanze corrette per una classe.
+    \item \textbf{F1-Score}: media armonica ponderata di precisione e richiamo normalizzata tra 0 e 1. Un punteggio F di 1 indica un equilibrio perfetto, poiché precisione e richiamo sono inversamente correlati.
+    \item \textbf{Accuratezza (Accuracy)}: valore che indica quanto spesso ci si può aspettare che il modello di machine learning preveda correttamente un risultato sul numero totale di volte che ha fatto previsioni.
+    \item \textbf{Support}: numero di occorrenze effettive di una classe nel dataset.
+\end{itemize}
+Per i due task sono state utilizzate due tipi di valutazione differenti:
+\begin{itemize}
+    \item \textbf{Text Classification}: per questo task è stata scelta una valutazione rigida. Per ogni testo presente nel dataset, se la previsione del modello corrisponde al valore atteso, allora viene valutato come corretto, altrimenti come incorretto. Pertanto, il valore a cui si fa riferimento è l'accuratezza, che si calcola come il rapporto tra le predizioni corrette ed il numero di esempi totali.
+    
+    \item \textbf{Named Entity Recognition}: per il NER, si prende come riferimento la valutazione proposta nel task CoNLL-2003\footnote{CoNLL-2003 Paper: \href{https://aclanthology.org/W03-0419.pdf}{https://aclanthology.org/W03-0419.pdf}} e nello script \textit{conlevall}\footnote{conlleval script in perl: \href{https://www.clips.uantwerpen.be/conll2000/chunking/conlleval.txt}{https://www.clips.uantwerpen.be/conll2000/chunking/conlleval.txt}}.Le prestazioni dei sistemi sono misurate in termini di precisione, richiamo e f1-score, dove:\\
+    \textit{"La precisione è la percentuale di named entities trovate dal sistema di apprendimento che sono corrette. Recall è la percentuale di entità presenti nel corpus che vengono trovate dal sistema. Una named entity è corretta solo se c'è una corrispondenza esatta dell'entità corrispondente nel file di dati".}\\
+    Pertanto, il calcolo non tiene in considerazione le previsioni del tag \textit{'O'} (ovvero, chunk che non è una named entity) che sono invece valutate dall'accuracy.
+\end{itemize}

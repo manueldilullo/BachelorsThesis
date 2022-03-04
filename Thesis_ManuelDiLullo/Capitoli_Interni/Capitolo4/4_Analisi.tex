@@ -1,0 +1,16 @@
+\section{Analisi Prestazionale}
+Costruite le pipelines, a partire da ognuna di esse è stato addestrato un modello utilizzando il metodo \verb|.fit()|:
+\begin{center}
+    \verb|pipelineModel = pipeline.fit(train_data)|
+\end{center}
+Una volta pronto il modello, è stato testato utilizzando il metodo \verb|.transform()|. Facendo ciò, viene generato un nuovo DataFrame aggiungendo a quello di partenza una colonna con le previsioni fatte dal modello:
+\begin{center}
+    \verb|predictions = pipelineModel.transform(test_data)|
+\end{center}
+Utilizzando i modelli addestrati, sono state svolte due tipi di valutazioni. La prima tiene conto dell'accuratezza delle predizioni ottenute dai modelli utilizzando i dataset di test descritti nelle sezioni \ref{textc_data}, \ref{ner_eng_data} e \ref{ner_ita_data}. La seconda misura i tempi di esecuzione ottenuti parallelizzando il lavoro ed opera su di un dataset di 760.000 record.
+\input{Capitoli_Interni/Capitolo4/Sottosezioni_3/1_Metriche}
+\newpage
+\input{Capitoli_Interni/Capitolo4/Sottosezioni_3/2_Performance}
+\clearpage
+\input{Capitoli_Interni/Capitolo4/Sottosezioni_3/3_TempiEsecuzione}
+\input{Capitoli_Interni/Capitolo4/Sottosezioni_3/4_Valutazioni}

@@ -1,0 +1,23 @@
+\subsection{Spark NLP per Text Classification}
+Spark NLP dispone di un annotatore chiamato \textit{ClassifierDL}, un classificatore multi-classe che utilizza una Deep Neural Network e supporta fino a 100 classi diverse. ClassifierDL richiede dei \verb|SENTENCE_EMBEDDINGS| (ovvero embedding di intere frasi) come input e restituisce una predizione sulla categoria a cui appartiene il testo.
+
+I dataset estratti dai file in formato \verb|CSV| (descritti nel paragrafo \ref{textc_data}) vengono importati in uno \verb|Spark Dataframe| (argomento trattato nel paragrafo \ref{rdd_df}).
+
+Per ottenere gli embeddings a partire dal testo, Spark NLP mette a dispozione diverse alternative; i due componenti utilizzati in questo progetto sono:
+\begin{itemize}
+    \item \textbf{Universal Sentence Encoder}
+    \item \textbf{Bert Sentence Embeddings}
+\end{itemize}
+Non è il nostro scopo studiare come avviene l’addestramento dei modelli utilizzati per la produzione degli embeddings, pertanto verrano utilizzati modelli pre-addestrati presenti nella sezione 
+\textit{NLP Models Hub}\footnote{Models Hub: \href{https://nlp.johnsnowlabs.com/models}{https://nlp.johnsnowlabs.com/models}} 
+della documentazione di Spark NLP. Per la precisione sono stati importati:
+\begin{itemize}
+    \item \verb|tfhub_use|\footnote{tfhub\_use: \href{https://nlp.johnsnowlabs.com/2020/04/17/tfhub\_use.html}{https://nlp.johnsnowlabs.com/2020/04/17/tfhub\_use.html}} per \verb|UniversalSentenceEncoder|, addestrato con una Deep Averaging Network (DAN)
+    \item \verb|sent_bert_base_cased|\footnote{sent\_bert\_base\_cased\href{https://nlp.johnsnowlabs.com/2020/08/25/sent\_bert\_base\_cased.html}{https://nlp.johnsnowlabs.com/2020/08/25/sent\_bert\_base\_cased.html}} per \verb|BertSentenceEmbeddings| (24 Layers di dimensione 1024).
+\end{itemize}
+Le \textit{pipelines} sono costruite seguendo il seguente ordine:
+\begin{enumerate}
+    \item \verb|Document Assembler|: prepara i dati in un formato processabile da Spark NLP.
+    \item \verb|Encoder| (USE o Bert Sentence Embeddings): aggiunge una colonna al Dataframe dove, per ogni riga viene aggiunto il vettore ottenuto codificando il testo.
+    \item \verb|ClassifierDL|: data in input la colonna degli embeddings ottenuta dallo step precedente, si occupa della classificazione ed aggiunge un'ulteriore colonna nella quale viene inserita la predizione della classe associata al testo.
+\end{enumerate}

@@ -1,0 +1,11 @@
+\section{Language Modeling}
+Quando si lavora con un enorme corpus di dati testuali, è utile conoscere la probabilità con cui una sequenza di parole si succederà e quali particolari caratteristiche sono necessarie per capire questa dipendenza.
+
+Il Language Modeling è il compito di capire questa distribuzione di probabilità su una sequenza di parole. Ciò aiuta a creare caratteristiche che possono distinguere tra frasi e frasi, secondo il contesto in cui appaiono.
+I modelli linguistici interpretano questi dati alimentandoli attraverso un algoritmo che stabilisce regole per il contesto nel linguaggio naturale. A questo punto, il modello applica queste regole in compiti linguistici per prevedere o produrre nuove frasi. Il modello essenzialmente impara le caratteristiche del linguaggio di base e usa queste caratteristiche per capire nuove proposizioni.
+
+Esistono diversi approcci probabilistici al language modeling, che variano a seconda dello scopo del modello linguistico. In questa tesi, è stato implementato un approccio al language modeling atto a modellare il testo in modo tale che questo possa essere convertito in un input numerico per una rete neurale artificiale. Nelle sezioni successive verrà approfondito proprio questo concetto, chiamato \textit{Word Embedding}, per poi discutere in particolar modo dei modelli \textit{GloVe}\textsuperscript{\cite{pennington-etal-2014-glove}}, \textit{BERT}\textsuperscript{\cite{devlin2019bert}} e \textit{USE}\textsuperscript{\cite{cer2018universal}}, utilizzati durante la fase di sperimentazione descritta nei capitoli successivi.
+\input{Capitoli_Interni/Capitolo2/Sottosezioni_4/1_WordEmbeddings}
+\input{Capitoli_Interni/Capitolo2/Sottosezioni_4/2_GloVe}
+\input{Capitoli_Interni/Capitolo2/Sottosezioni_4/3_BERT}
+\input{Capitoli_Interni/Capitolo2/Sottosezioni_4/4_USE}

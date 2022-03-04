@@ -1,0 +1,32 @@
+\subsection{MapReduce}
+MapReduce\footnote{Documentazione MapReduce \href{https://hadoop.apache.org/docs/r1.2.1/mapred\_tutorial.html}{https://hadoop.apache.org/docs/r1.2.1/mapred\_tutorial.html}} è un framework per la creazione di applicazioni in grado di elaborare grandi quantità di dati in parallelo, permettendo una scalabilità massiccia su centinaia o migliaia di server in un cluster Hadoop. É stato reso popolare come modello di programmazione nel 2004 da Jeffery Dean e Sanjay Ghemawat di Google. Nel loro articolo \textit{MapReduce: simplified data processing on large clusters}\textsuperscript{\cite{pub62_mapreduce}} hanno discusso l'approccio di Google alla raccolta e all'analisi dei dati dei siti web per l'ottimizzazione della ricerca. Successivamente implementato da Apache, è diventato uno dei componenti principali del progetto Hadoop, nel quale, come il componenente HDFS è il responsabile della memorizzazione dei file, MapReduce si occupa di processare questi ultimi.
+
+L'algoritmo implementato prende il nome dalle principali funzioni da cui è composto:
+\begin{itemize}
+    \item \textbf{Map}: trasforma i dati ricevuti in input in tuple formate da coppie chiave/valore.
+    \item \textbf{Reduce}: prende in input l'output generato da Map e combina le coppie chiave-valore in un insieme più piccolo di tuple.
+\end{itemize}
+Tra le funzioni Map e Reduce avvengono operazioni di \textit{sorting} e \textit{shuffling} che si occupano di ordinare e raggruppare per chiave l'output di Map e fornirlo come input a Reduce.
+
+MapReduce lavora secondo il principio del \textit{divide et impera}, suddividendo l'operazione di calcolo in diverse parti che verranno processate in modo autonomo per poi ricomporle (o ridurle) in un unico risultato finale. Queste parti sono dette \textit{jobs} e sono formate da sorgente di input, destinazione dei dati e le funzioni Map e Reduce.
+
+Generalmente, l'algoritmo viene eseguito sugli stessi nodi su cui risiede HDFS, il che significa che ognuno di essi viene utilizzato sia per il calcolo che per lo storage. Il vantaggio di una tale configurazione è che i compiti possono essere programmati sui nodi dove risiedono i dati e quindi risulta un'elevata larghezza di banda aggregata in tutto il cluster.
+\begin{figure}[hbt!]
+    \centering
+    \includegraphics[width=1\textwidth]{img/mapreduce.png}
+    \caption{Algoritmo MapReduce}
+    \label{fig:mapreduce}
+\end{figure}\\
+
+Come e da chi vengono gestite internamente queste operazioni? MapReduce, a livello architetturale, presenta due componenti: 
+\begin{itemize}
+    \item \textbf{Job Tracker}: si occupa della gestione delle risorse (CPU e memoria) e del ciclo di vita di un job MapReduce. Il JobTracker distribuisce il lavoro tra i nodi più vicini che contengono i dati da elaborare; nel caso in cui un nodo non possa ospitare il task, si fa poi carico della schedulazione del job nonché della ripetizione dell’esecuzione dei singoli task di MapReduce che si trovano in uno stato di errore. 
+    \item \textbf{Task Tracker}: Sono le componenti che girano sui singoli nodi e che eseguono effettivamente i task sotto la direzione del JobTracker.
+\end{itemize}
+
+Cosa rende questo framework così importante? I benefici che porta sono notevoli e, alla sua nascita, portò grande innovazione nel campo del calcolo distribuito. I due principali vantaggi che questa tecnologia offre sono:
+\begin{enumerate}
+    \item \textbf{Elaborazione parallela}: l'intero lavoro è diviso in job che vengono elaborati in modo parallelo simultaneamente, riducendo drasticamente i tempi di esecuzione.
+    \item \textbf{Località dei dati}: invece di spostare tutti i dati per l'elaborazione, il processo completo viene spostato su ogni nodo. Col crescere del quantitativo di dati da processare, può diventare difficile spostarli da un posto all'altro e quindi questa tecnica è considerata un'alternativa assai vantaggiosa.
+\end{enumerate}
+

@@ -1,0 +1,20 @@
+\subsection{Spark NLP per Named Entity Recognition}
+SparkNLP dispone di un annotatore chiamato \textbf{NerDL} che permette di addestrare un modello NER generico basato su reti neurali e deep learning. I dati devono avere colonne di tipo \verb|DOCUMENT, TOKEN, WORD_EMBEDDINGS| e un'ulteriore colonna etichetta di tipo \verb|NAMED_ENTITY| per l'addestramento supervisionato.
+
+I dataset (descritti nelle sezioni \ref{sec:ner_dataset_en}, \ref{sec:ner_dataset_it}) sono stati importati attraverso il metodo \verb|sparknlp.training.CoNLL.readDataset(spark, path)| che legge il set di dati (nel formato di CoNLL 2003) da una risorsa esterna e genera uno \verb|Spark Dataframe|.
+
+A differenza di quanto fatto per il task di Text Classification che si serviva di \verb|SENTENCE_EMBEDDINGS|, per risolvere questo compito è stato necessario ottenere dei \verb|WORD_EMBEDDINGS| dai singoli token. Per ottenere i vettori a partire dai token, Spark NLP presenta alcune alternative. I due componenti che sono stati scelti ed impiegati in questo progetto sono:
+\begin{itemize}
+    \item \textbf{WordEmbeddings}, con il modello 
+    \verb|glove_100d|\footnote{Modello glove\_100d: \href{https://nlp.johnsnowlabs.com/2020/01/22/glove\_100d.html}{https://nlp.johnsnowlabs.com/2020/01/22/glove\_100d.html}} 
+    pre-addestrato utilizzando i dataset Wikipedia 2014 e Gigaword 5 (6B token, 400K vocaboli, non classificati, vettori: 50d, 100d, 200d e 300d). I risultati sono vettori di dimensione 100.
+    \item \textbf{BertEmbeddings}, con il modello pre-addestrato 
+    \verb|bert_base_cased|\footnote{bert\_base\_cased: \href{https://nlp.johnsnowlabs.com/2020/08/25/bert\_base\_cased.html}{https://nlp.johnsnowlabs.com/2020/08/25/bert\_base\_cased.html}} per la lingua inglese e 
+    \verb|bert_base_italian_cased|\footnote{bert\_base\_italian\_cased: \href{https://nlp.johnsnowlabs.com/2021/05/20/bert\_base\_italian\_cased\_it.html}{https://nlp.johnsnowlabs.com/2021/05/20/bert\_base\_italian\_cased\_it.html}}
+    (12 Layers di dimensione 768).
+\end{itemize}
+Le \textit{pipelines} sono costruite seguendo il seguente ordine:
+\begin{enumerate}
+    \item \verb|Encoder|: aggiunge una colonna al Dataframe dove, per ogni riga viene aggiunto il vettore ottenuto codificando il token.
+    \item \verb|NerDLApproach|: data in input la colonna degli embeddings ottenuta dallo step precedente, si occupa del riconoscimento delle named entities ed aggiunge un'ulteriore colonna dove, per ogni riga viene inserita la predizione della classe associata all'entità.
+\end{enumerate}
