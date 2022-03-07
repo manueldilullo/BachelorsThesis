@@ -1,6 +1,5 @@
 # Bachelor's degree thesis
-Thesis written by Manuel Di Lullo for the bachelor's degree in Computer Science at the University of Rome Tor Vergata. The title of the work is: "Un framework per il Natural Language Processing: analisi prestazionale per la risoluzione di task di Text Classification e Named Entity Recognition in ambiente distribuito" and it describe an experimental evaluation of a solution for tasks of Named Entity Recognition and Text Classification using Spark NLP in a distributed environment alongside Apache Hadoop and Apache Spark.   
-The contents are in Italian.  
+Thesis written by Manuel Di Lullo for the bachelor's degree in Computer Science at the University of Rome Tor Vergata. The title of the work is: "Un framework per il Natural Language Processing: analisi prestazionale per la risoluzione di task di Text Classification e Named Entity Recognition in ambiente distribuito" and it describe an experimental evaluation of a solution for tasks of Named Entity Recognition and Text Classification using Spark NLP in a distributed environment alongside Apache Hadoop and Apache Spark. The contents are in Italian.  
 
 <p align="center">
     <img width="500" src="MainPage.png" alt="MainPage"/>
